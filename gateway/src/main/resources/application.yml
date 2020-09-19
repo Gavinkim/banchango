@@ -1,11 +1,41 @@
 server:
-  port: 8081
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          - "gateway"
-  endpoint:
+  port: 8082
+spring:
+  management:
+    endpoint:
+      gateway:
+        enabled: true
+  cloud:
     gateway:
-      enabled: true
+      discovery:
+        locator:
+          enabled: true
+      httpclient:
+        connect-timeout: 10000
+        response-timeout: 10s
+
+      routes:
+      - id: auth-api
+        uri: http://localhost:9091
+        predicates:
+        - Path=/api/auth/**
+
+      - id: order-api
+        uri: http://localhost:9092
+        predicates:
+        - Path=/api/order/**
+
+      - id: product-api
+        uri: http://localhost:9093
+        predicates:
+        - Path=/api/product/**
+
+      - id: review-api
+        uri: http://localhost:9094
+        predicates:
+        - Path=/api/review/**
+
+      - id: wish-api
+        uri: http://localhost:9095
+        predicates:
+        - Path=/api/wish/**

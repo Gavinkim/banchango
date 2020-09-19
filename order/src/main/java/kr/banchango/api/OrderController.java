@@ -52,8 +52,8 @@ public class OrderController extends BaseController {
     );
   }
 
-  @GetMapping("{orderId}")
-  public Mono<OrderRes> getOrderDetail(){
+  @GetMapping("/{orderId}")
+  public Mono<OrderRes> getOrderDetail(@PathVariable String orderId){
     return Mono.just(
         OrderRes.builder()
             .amount(2)
@@ -65,7 +65,7 @@ public class OrderController extends BaseController {
             .productThumbnail("")
             .totalAmount(10000l)
             .storeId("111111")
-            .orderId("22213333")
+            .orderId(orderId)
             .build()
     );
   }

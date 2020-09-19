@@ -5,10 +5,7 @@ import kr.banchango.api.dto.LoginReq;
 import kr.banchango.api.dto.LoginRes;
 import kr.banchango.api.dto.RefreshTokenReq;
 import kr.banchango.api.dto.RefreshTokenRes;
-import kr.banchango.api.dto.RegisterReq;
-import kr.banchango.api.dto.RegisterRes;
 import kr.banchango.api.dto.TokenVerifyRes;
-import kr.banchango.api.dto.UnRegisterReq;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,20 +58,4 @@ public class AuthController extends BaseController {
     return Mono.empty();
   }
 
-
-  @PostMapping("/register")
-  @ResponseStatus(HttpStatus.OK)
-  public Mono<RegisterRes> register(@RequestBody RegisterReq registerReq) {
-    return Mono.just(RegisterRes.builder()
-        .email(registerReq.getEmail())
-        .username(registerReq.getUsername())
-        .registedAt(LocalDateTime.now())
-        .build());
-  }
-
-  @PostMapping("/remove")
-  @ResponseStatus(HttpStatus.OK)
-  public Mono<Void> removeUser(@RequestBody UnRegisterReq unRegisterReq) {
-    return Mono.empty();
-  }
 }
