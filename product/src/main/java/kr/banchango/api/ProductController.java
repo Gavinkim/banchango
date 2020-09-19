@@ -1,6 +1,8 @@
 package kr.banchango.api;
 
+import java.util.Arrays;
 import java.util.List;
+import kr.banchango.api.dto.CategoryRes;
 import kr.banchango.api.dto.ProductDetailRes;
 import kr.banchango.api.dto.ProductRes;
 import kr.banchango.api.dto.ProductSearch;
@@ -47,5 +49,29 @@ public class ProductController extends BaseController {
         .wishCount(23L)
         .description("This is sample product.")
         .build());
+  }
+
+  @GetMapping(path = "/categories")
+  public Mono<List<CategoryRes>> categories() {
+    return Mono.just(
+        Arrays.asList(
+            CategoryRes.builder()
+                .categoryId("111")
+                .name("해산물")
+                .build(),
+            CategoryRes.builder()
+                .categoryId("2222")
+                .name("육류")
+                .build(),
+            CategoryRes.builder()
+                .categoryId("3333")
+                .name("채소")
+                .build(),
+            CategoryRes.builder()
+                .categoryId("3333")
+                .name("일회용")
+                .build()
+        )
+    );
   }
 }
