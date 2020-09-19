@@ -1,1 +1,17 @@
+#spring:
+#  thymeleaf:
+#    mode: HTML
+#    check-template: false
+#    cache: false
+#  jackson:
+#    default-property-inclusion: non_empty
+#    serialization:
+#      WRITE_DATES_AS_TIMESTAMPS: false
 
+logging:
+  level:
+    root: DEBUG
+    org.springframework.web.reactive.function.client.ExchangeFunctions: DEBUG
+    org.hibernate.type.descriptor.sql: trace
+  file:
+    path: target/logs
