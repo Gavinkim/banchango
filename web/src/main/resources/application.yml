@@ -1,0 +1,7 @@
+spring:
+  thymeleaf:
+    mode: HTML
+    check-template: false
+    cache: false
+server:
+  port: 8080

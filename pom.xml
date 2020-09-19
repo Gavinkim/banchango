@@ -13,6 +13,7 @@
     <module>batch</module>
     <module>review</module>
     <module>gateway</module>
+    <module>web</module>
   </modules>
 
   <parent>
